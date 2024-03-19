@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="UI.appUI">
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="UI.AppUI">
   <grid id="27dc6" binding="Manager" layout-manager="BorderLayout" hgap="0" vgap="0">
     <constraints>
       <xy x="127" y="81" width="1000" height="600"/>
@@ -70,7 +70,7 @@
                   <horizontalAlignment value="2"/>
                   <horizontalTextPosition value="4"/>
                   <icon value="src/iconsTabs/rutas.png"/>
-                  <iconTextGap value="35"/>
+                  <iconTextGap value="30"/>
                   <opaque value="false"/>
                   <preferredSize width="250" height="60"/>
                   <text value="Destinos"/>
@@ -94,7 +94,7 @@
                   <horizontalAlignment value="2"/>
                   <horizontalTextPosition value="4"/>
                   <icon value="src/iconsTabs/generarViajes.png"/>
-                  <iconTextGap value="35"/>
+                  <iconTextGap value="30"/>
                   <opaque value="true"/>
                   <preferredSize width="250" height="60"/>
                   <text value="Generar Viajes"/>
@@ -116,7 +116,7 @@
                   <horizontalAlignment value="2"/>
                   <horizontalTextPosition value="4"/>
                   <icon value="src/iconsTabs/viajes.png"/>
-                  <iconTextGap value="35"/>
+                  <iconTextGap value="30"/>
                   <opaque value="false"/>
                   <preferredSize width="250" height="60"/>
                   <text value="Viajes"/>
@@ -144,7 +144,7 @@
               <opaque value="true"/>
             </properties>
             <border type="empty">
-              <size top="20" left="10" bottom="20" right="10"/>
+              <size top="20" left="0" bottom="20" right="20"/>
             </border>
             <children>
               <grid id="2e091" binding="Destinytop" layout-manager="BorderLayout" hgap="0" vgap="0">
@@ -196,7 +196,7 @@
                           </component>
                         </children>
                       </grid>
-                      <grid id="a9e01" layout-manager="BorderLayout" hgap="0" vgap="0">
+                      <grid id="a9e01" binding="editPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
                         <constraints/>
                         <properties>
                           <background color="-1"/>
@@ -251,6 +251,42 @@
                       </component>
                     </children>
                   </grid>
+                </children>
+              </grid>
+              <grid id="e89b3" layout-manager="BorderLayout" hgap="0" vgap="0">
+                <constraints border-constraint="Center"/>
+                <properties>
+                  <opaque value="false"/>
+                </properties>
+                <border type="empty">
+                  <size top="0" left="30" bottom="0" right="0"/>
+                </border>
+                <children>
+                  <scrollpane id="ee65f" binding="scroolPanel">
+                    <constraints border-constraint="Center"/>
+                    <properties>
+                      <opaque value="false"/>
+                      <toolTipText value=""/>
+                    </properties>
+                    <border type="line">
+                      <color color="-15119296"/>
+                    </border>
+                    <children>
+                      <component id="7896a" class="javax.swing.JTable" binding="destinyTable">
+                        <constraints/>
+                        <properties>
+                          <autoResizeMode value="2"/>
+                          <background color="-1"/>
+                          <focusable value="true"/>
+                          <gridColor color="-9203918"/>
+                          <name value=""/>
+                          <opaque value="false"/>
+                          <selectionBackground color="-5391201"/>
+                          <toolTipText value="Hola&#10;"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </scrollpane>
                 </children>
               </grid>
             </children>

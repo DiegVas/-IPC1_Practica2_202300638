@@ -1,7 +1,10 @@
-import UI.appUI;
+import UI.AppUI;
+import src.Classes.Destines;
 
 public class Main {
     public static void main(String[] args) {
-        appUI ui = new appUI();
+        AppUI ui = new AppUI();
+       
+
     }
 }
