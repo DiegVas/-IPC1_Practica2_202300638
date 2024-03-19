@@ -1,17 +1,28 @@
 package UI;
 
+import src.Classes.Data;
+import src.Classes.Destines;
+
 import javax.swing.*;
 import java.awt.event.*;
 
 public class EditDistance extends JDialog {
     private JPanel contentPane;
+
+    private Destines destine;
     private JButton buttonOK;
     private JButton buttonCancel;
+    private JPanel bottomPanel;
+    private JLabel DestinyLabel;
+    private JSpinner spinner1;
 
-    public EditDistance() {
+    public EditDistance(Destines destine) {
+        this.destine = destine;
+
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
+        spinner1.setValue(Integer.parseInt(this.destine.distance));
 
         buttonOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -19,42 +30,17 @@ public class EditDistance extends JDialog {
             }
         });
 
-        buttonCancel.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onCancel();
-            }
-        });
 
-        // call onCancel() when cross is clicked
-        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-        addWindowListener(new WindowAdapter() {
-            public void windowClosing(WindowEvent e) {
-                onCancel();
-            }
-        });
-
-        // call onCancel() on ESCAPE
-        contentPane.registerKeyboardAction(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onCancel();
-            }
-        }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
     }
 
     private void onOK() {
-        // add your code here
-        dispose();
-    }
+        Data data = new Data();
+        int index = data.destinesList.indexOf(destine);
+        Destines oldDestine = data.destinesList.get(index);
+        data.destinesList.set(index, new Destines(oldDestine.start, oldDestine.end, spinner1.getValue().toString()));
+        AppUI.model.setValueAt(spinner1.getValue(), index, 3);
 
-    private void onCancel() {
-        // add your code here if necessary
+        this.dispose();
         dispose();
-    }
-
-    public static void main(String[] args) {
-        EditDistance dialog = new EditDistance();
-        dialog.pack();
-        dialog.setVisible(true);
-        System.exit(0);
     }
 }

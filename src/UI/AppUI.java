@@ -35,6 +35,11 @@ public class AppUI extends JFrame {
     private JTable destinyTable;
     private JScrollPane scroolPanel;
     private JPanel editPanel;
+    private JButton generateButton;
+    private JLabel pilotLabel;
+    private JComboBox comboBox1;
+    private JComboBox comboBox2;
+    private JComboBox comboBox3;
 
     public static DefaultTableModel model = new DefaultTableModel();
     private final CardLayout cardLayout;
@@ -114,7 +119,10 @@ public class AppUI extends JFrame {
         editPanel.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                System.out.println("Editar");
+                if (destinyTable.getSelectedRow() == -1) return;
+                EditDistance dialog = new EditDistance(Data.destinesList.get(destinyTable.getSelectedRow()));
+                dialog.pack();
+                dialog.setVisible(true);
                 super.mouseClicked(e);
             }
         });

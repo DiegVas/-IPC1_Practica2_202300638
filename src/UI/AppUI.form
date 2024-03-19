@@ -291,7 +291,7 @@
               </grid>
             </children>
           </grid>
-          <grid id="45903" binding="editDestinyPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
+          <grid id="45903" binding="editDestinyPanel" layout-manager="BorderLayout" hgap="0" vgap="10">
             <constraints>
               <card name="editDestiny"/>
             </constraints>
@@ -299,8 +299,139 @@
               <background color="-1447447"/>
               <opaque value="true"/>
             </properties>
-            <border type="none"/>
-            <children/>
+            <border type="empty">
+              <size top="20" left="20" bottom="20" right="20"/>
+            </border>
+            <children>
+              <component id="8e09c" class="javax.swing.JLabel">
+                <constraints border-constraint="North"/>
+                <properties>
+                  <alignmentX value="0.0"/>
+                  <font name="Segoe UI" size="36" style="1"/>
+                  <foreground color="-15583446"/>
+                  <text value="Generar viajes"/>
+                </properties>
+              </component>
+              <grid id="13008" layout-manager="BorderLayout" hgap="0" vgap="0">
+                <constraints border-constraint="Center"/>
+                <properties>
+                  <background color="-1"/>
+                  <opaque value="true"/>
+                </properties>
+                <border type="line">
+                  <color color="-9203918"/>
+                </border>
+                <children>
+                  <grid id="d06f" layout-manager="FlowLayout" hgap="0" vgap="5" flow-align="1">
+                    <constraints border-constraint="West"/>
+                    <properties>
+                      <opaque value="false"/>
+                      <preferredSize width="350" height="0"/>
+                    </properties>
+                    <border type="none"/>
+                    <children>
+                      <grid id="2c9e6" layout-manager="BorderLayout" hgap="0" vgap="0">
+                        <constraints/>
+                        <properties>
+                          <opaque value="true"/>
+                          <preferredSize width="350" height="100"/>
+                        </properties>
+                        <border type="none"/>
+                        <children>
+                          <component id="729eb" class="javax.swing.JLabel">
+                            <constraints border-constraint="North"/>
+                            <properties>
+                              <preferredSize width="33" height="50"/>
+                              <text value="Label"/>
+                            </properties>
+                          </component>
+                          <component id="5a877" class="javax.swing.JComboBox" binding="comboBox1" default-binding="true">
+                            <constraints border-constraint="Center"/>
+                            <properties/>
+                          </component>
+                        </children>
+                      </grid>
+                      <grid id="c8900" layout-manager="BorderLayout" hgap="0" vgap="0">
+                        <constraints/>
+                        <properties>
+                          <opaque value="true"/>
+                          <preferredSize width="350" height="100"/>
+                        </properties>
+                        <border type="none"/>
+                        <children>
+                          <component id="d8f45" class="javax.swing.JLabel">
+                            <constraints border-constraint="North"/>
+                            <properties>
+                              <preferredSize width="33" height="50"/>
+                              <text value="Label"/>
+                            </properties>
+                          </component>
+                          <component id="e16e0" class="javax.swing.JComboBox" binding="comboBox2" default-binding="true">
+                            <constraints border-constraint="Center"/>
+                            <properties/>
+                          </component>
+                        </children>
+                      </grid>
+                      <grid id="11728" layout-manager="BorderLayout" hgap="0" vgap="0">
+                        <constraints/>
+                        <properties>
+                          <opaque value="true"/>
+                          <preferredSize width="350" height="100"/>
+                        </properties>
+                        <border type="none"/>
+                        <children>
+                          <component id="d6622" class="javax.swing.JLabel">
+                            <constraints border-constraint="North"/>
+                            <properties>
+                              <preferredSize width="33" height="50"/>
+                              <text value="Label"/>
+                            </properties>
+                          </component>
+                          <component id="51959" class="javax.swing.JComboBox" binding="comboBox3" default-binding="true">
+                            <constraints border-constraint="Center"/>
+                            <properties/>
+                          </component>
+                        </children>
+                      </grid>
+                    </children>
+                  </grid>
+                  <grid id="45fdb" layout-manager="BorderLayout" hgap="0" vgap="0">
+                    <constraints border-constraint="East"/>
+                    <properties>
+                      <opaque value="false"/>
+                      <preferredSize width="350" height="0"/>
+                    </properties>
+                    <border type="none"/>
+                    <children/>
+                  </grid>
+                </children>
+              </grid>
+              <grid id="be299" layout-manager="BorderLayout" hgap="0" vgap="0">
+                <constraints border-constraint="South"/>
+                <properties>
+                  <opaque value="false"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="86dba" class="javax.swing.JLabel" binding="pilotLabel">
+                    <constraints border-constraint="West"/>
+                    <properties>
+                      <alignmentX value="0.0"/>
+                      <font name="Segoe UI" size="36" style="1"/>
+                      <foreground color="-15583446"/>
+                      <text value="Pilotos: 0"/>
+                    </properties>
+                  </component>
+                  <component id="d0f92" class="javax.swing.JButton" binding="generateButton">
+                    <constraints border-constraint="East"/>
+                    <properties>
+                      <preferredSize width="200" height="50"/>
+                      <text value="Button"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+            </children>
           </grid>
           <grid id="7862a" binding="tripsPanel" layout-manager="BorderLayout" hgap="0" vgap="0">
             <constraints>

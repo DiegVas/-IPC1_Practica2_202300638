@@ -13,14 +13,14 @@ import static java.awt.image.ImageObserver.ERROR;
 import static javax.swing.JOptionPane.showMessageDialog;
 
 public class Data {
-    public static List<Destines> destinesList;
-    public static List<Register> registerList;
+    public static List<Destines> destinesList = new ArrayList<>();
+    public static List<Register> registerList = new ArrayList<>();
 
 
     public List<Destines> loadDestines(String path) {
 
         BufferedReader reader;
-        List<Destines> destinesList = new ArrayList<>();
+        destinesList = new ArrayList<>();
 
         try {
             String row;
