@@ -1,7 +1,7 @@
 package UI;
 
-import src.Classes.Data;
-import src.Classes.Destines;
+import Classes.Data;
+import Classes.Destines;
 
 import javax.swing.*;
 import java.awt.event.*;

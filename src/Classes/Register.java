@@ -1,4 +1,4 @@
-package src.Classes;
+package Classes;
 
 public class Register {
 }

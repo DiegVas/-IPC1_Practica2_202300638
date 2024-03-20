@@ -1,4 +1,4 @@
-package src.Classes;
+package Classes;
 
 import UI.AppUI;
 
@@ -13,11 +13,23 @@ import static java.awt.image.ImageObserver.ERROR;
 import static javax.swing.JOptionPane.showMessageDialog;
 
 public class Data {
+    public static int Pilots = 3;
     public static List<Destines> destinesList = new ArrayList<>();
     public static List<Register> registerList = new ArrayList<>();
+    public final List<vehicle> vehicleList = List.of(new vehicle("Motocicleta 1", typeVehicle.Motorcycle),
+            new vehicle("Motocicleta 1", typeVehicle.Motorcycle),
+            new vehicle("Motocicleta 2", typeVehicle.Motorcycle),
+            new vehicle("Motocicleta 3", typeVehicle.Motorcycle),
+            new vehicle("Vehiculo estandar 1", typeVehicle.Standard),
+            new vehicle("Vehiculo estandar 2", typeVehicle.Standard),
+            new vehicle("Vehiculo estandar 3", typeVehicle.Standard),
+            new vehicle("Vehiculo premium 1", typeVehicle.Premium),
+            new vehicle("Vehiculo premium 2", typeVehicle.Premium),
+            new vehicle("Vehiculo premium 3", typeVehicle.Premium)
+    );
 
 
-    public List<Destines> loadDestines(String path) {
+    public void loadDestines(String path) {
 
         BufferedReader reader;
         destinesList = new ArrayList<>();
@@ -25,16 +37,21 @@ public class Data {
         try {
             String row;
             reader = new BufferedReader(new FileReader(path));
+            AppUI.starTripModel.removeAllElements();
+            AppUI.endTripModel.removeAllElements();
             AppUI.model.setRowCount(0);
+            List<String> nameRoutres = new ArrayList<String>();
 
             while ((row = reader.readLine()) != null) {
                 String[] cell = row.split("[;,]");
                 destinesList.add(new Destines(cell[0], cell[1], cell[2]));
                 Object[] tableRow = {destinesList.size(), cell[0], cell[1], cell[2]};
-
                 AppUI.model.addRow(tableRow);
+                nameRoutres.add(cell[0]);
+                nameRoutres.add(cell[1]);
             }
 
+            AppUI.starTripModel.addAll(nameRoutres);
 
         } catch (FileNotFoundException e) {
             showMessageDialog(null, "No se pudo leer el mensaje", "Error de lectura", ERROR);
@@ -43,7 +60,6 @@ public class Data {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return destinesList;
     }
 
 
