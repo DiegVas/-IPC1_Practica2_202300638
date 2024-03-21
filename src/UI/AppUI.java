@@ -2,6 +2,7 @@ package UI;
 
 import Classes.Data;
 import Classes.Destines;
+import Classes.Trip;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;
@@ -12,6 +13,9 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.JTableHeader;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.geom.AffineTransform;
+import java.awt.image.AffineTransformOp;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.Objects;
 
@@ -45,10 +49,26 @@ public class AppUI extends JFrame {
     private JButton recargeTrip1;
     private JLabel vehicleLabel1;
     private JLabel tripvehicle2;
+    private JButton RegisterButton;
+    private JButton startTripButton2;
+    private JButton recargeTrip2;
+    private JButton startTripButton3;
+    private JButton recargeTrip3;
+    private JLabel vehicleLabel2;
+    private JLabel vehicleLabel3;
+    private JLabel tripGasoline2;
+    private JLabel tripGasoline3;
+    private JLabel tripDistance2;
+    private JLabel tripDistance3;
     private final Data baseData = new Data();
     public static DefaultTableModel model = new DefaultTableModel();
 
     public static DefaultComboBoxModel<String> vehicleComboModel = new DefaultComboBoxModel<>(), starTripModel = new DefaultComboBoxModel<>(), endTripModel = new DefaultComboBoxModel<>();
+
+    public java.util.List<TripsAnimated> tripsAnimated = java.util.List.of(new AppUI.TripsAnimated("", vehicleLabel1, tripDistance1, startTripButton1, recargeTrip1, new Timer(100, null), 200)
+            , new AppUI.TripsAnimated("", vehicleLabel2, tripDistance2, startTripButton2, recargeTrip2, new Timer(100, null), 50),
+            new AppUI.TripsAnimated("", vehicleLabel3, tripDistance3, startTripButton3, recargeTrip3, new Timer(100, null), 90));
+
 
     public AppUI() {
 
@@ -66,14 +86,14 @@ public class AppUI extends JFrame {
 
 
         UIManager.put("Button.select", new Color(0x436850));
-        vehicleLabel1.setIcon(new ImageIcon(getSystemResource("./src/vehiclesImage/vehiclePremium.png")));
 
         //Destines
         DestinesUI destinesUI = new DestinesUI();
         //Generate routes
         GenerateRoutesUi routesUi = new GenerateRoutesUi();
         //Trips
-        TripsUI tripsUI = new TripsUI();
+        TripUI tripUI = new TripUI();
+
     }
 
 
@@ -98,6 +118,7 @@ public class AppUI extends JFrame {
             travelsButton.addActionListener(e -> ((CardLayout) panelLayout.getLayout()).show(panelLayout, "destiny"));
             editDestinyButton.addActionListener(e -> ((CardLayout) panelLayout.getLayout()).show(panelLayout, "editDestiny"));
             tripButton.addActionListener(e -> ((CardLayout) panelLayout.getLayout()).show(panelLayout, "trips"));
+            RegisterButton.addActionListener(e -> ((CardLayout) panelLayout.getLayout()).show(panelLayout, "register"));
             destiny_File.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
@@ -154,10 +175,8 @@ public class AppUI extends JFrame {
                     String selectTrip = Objects.requireNonNull(starTripCombo.getSelectedItem()).toString();
                     Destines destineInfo = Data.destinesList.stream().filter(destines -> destines.start.equals(selectTrip) || destines.end.equals(selectTrip)).toList().getFirst();
                     String endTrip = selectTrip.equals(destineInfo.start) ? destineInfo.end : destineInfo.start;
-
                     endTripModel.removeAllElements();
                     endTripModel.addElement(endTrip);
-
                     startLabel.setText(selectTrip);
                     endLabel.setText(endTrip);
                     distanceLabel.setText(destineInfo.distance);
@@ -174,51 +193,115 @@ public class AppUI extends JFrame {
                     generateButton.setBackground(Color.red);
                     generateButton.setForeground(Color.black);
                 }
+
+
+
+                Data.tripList.add(new Trip(new Destines(startLabel.getText(), endLabel.getText(), distanceLabel.getText()), baseData.vehicleList.get(starTripCombo.getSelectedIndex()),
+
+
+
+                        ));
+
             });
 
         }
     }
 
-    private class TripsUI {
-        private double distance = 100;
-        private int x = 5;
-        private double distanceRes = distance / (350 - x);
-        private Timer tripTimer1;
+    private class TripUI {
+        TripUI() {
 
-        TripsUI() {
-            tripTimer1 = new Timer(10, new ActionListener() {
+
+            initAllTripsButton.addActionListener(e -> {
+                tripsAnimated.get(0).tripTimer.start();
+                tripsAnimated.get(2).tripTimer .start();
+                tripsAnimated.get(3).tripTimer.start();
+            });
+        }
+    }
+
+    public class TripsAnimated {
+        private static final int TOTAL_DISTANCE = 350;
+        private static final int INITIAL_X = 5;
+        private double INITIAL_DISTANCE;
+
+        private double distance;
+        private double xvelocity;
+        private double x = INITIAL_X;
+        private Timer tripTimer;
+        private boolean reverse = false;
+        private String path;
+        private JLabel vehicleLabel;
+        private JLabel distanceLabel;
+        private JButton inittripButton;
+        private JButton recargeGasolineButton;
+
+        TripsAnimated(String path, JLabel vehicleLabel, JLabel distanceLabel, JButton inittripButton, JButton recargeGasolineButton, Timer timer, int INITIAL_DISTANCE) {
+            this.path = path;
+            this.vehicleLabel = vehicleLabel;
+            this.distanceLabel = distanceLabel;
+            this.inittripButton = inittripButton;
+            this.recargeGasolineButton = recargeGasolineButton;
+            this.tripTimer = timer;
+            this.INITIAL_DISTANCE = INITIAL_DISTANCE;
+            distance = INITIAL_DISTANCE;
+            xvelocity = TOTAL_DISTANCE / distance;
+
+            vehicleLabel.setIcon(new ImageIcon(getSystemResource(path)));
+            tripTimer.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    System.out.println(distanceRes);
-
-                    distance -= distanceRes;
-                    x += 1;
-                    if (x == 350) tripTimer1.stop();
-                    tripGasoline1.setText(String.format("%.2f", distance));
+                    updateDistanceAndPosition();
+                    distanceLabel.setText(String.valueOf(distance));
                     SwingUtilities.invokeLater(new Runnable() {
                         @Override
                         public void run() {
-                            vehicleLabel1.setLocation(x, 20);
-                            vehicleLabel1.repaint();
+                            vehicleLabel.setLocation((int) x, 20);
+                            vehicleLabel.repaint();
                         }
                     });
                 }
             });
 
-            startTripButton1.addActionListener(new ActionListener() {
+            inittripButton.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    tripTimer1.start();
+                    tripTimer.start();
                 }
             });
 
-            recargeTrip1.addActionListener(e -> {
-                distance = 20;
-                tripGasoline1.setText(String.valueOf(distance));
+            recargeGasolineButton.addActionListener(e -> {
+                distance = INITIAL_DISTANCE;
+                distanceLabel.setText(String.valueOf(distance));
             });
         }
-    }
 
+        private void updateDistanceAndPosition() {
+            distance -= 1;
+            x += reverse ? -xvelocity : xvelocity;
+            if (distance == 0) {
+                tripTimer.stop();
+                distanceLabel.setText(reverse ? "Iniciar" : "Volver");
+                reverse = !reverse;
+                distance = INITIAL_DISTANCE;
+                flipImage();
+            }
+        }
+
+        public void flipImage() {
+            ImageIcon icon = (ImageIcon) vehicleLabel.getIcon();
+            BufferedImage bufferedImage = new BufferedImage(
+                    icon.getIconWidth(),
+                    icon.getIconHeight(),
+                    BufferedImage.TYPE_INT_ARGB);
+            icon.paintIcon(null, bufferedImage.getGraphics(), 0, 0);
+
+            AffineTransform tx = AffineTransform.getScaleInstance(-1, 1);
+            tx.translate(-bufferedImage.getWidth(null), 0);
+            AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_NEAREST_NEIGHBOR);
+            bufferedImage = op.filter(bufferedImage, null);
+            vehicleLabel.setIcon(new ImageIcon(bufferedImage));
+        }
+    }
 
     public static void setBorderColorOfComboBoxPopup(JComboBox<String> comboBox) {
         Object child = comboBox.getAccessibleContext().getAccessibleChild(0);

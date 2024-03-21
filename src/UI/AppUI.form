@@ -122,6 +122,28 @@
                   <text value="Viajes"/>
                 </properties>
               </component>
+              <component id="343e9" class="javax.swing.JButton" binding="RegisterButton">
+                <constraints/>
+                <properties>
+                  <autoscrolls value="false"/>
+                  <background color="-15583446"/>
+                  <borderPainted value="false"/>
+                  <contentAreaFilled value="true"/>
+                  <defaultCapable value="false"/>
+                  <focusPainted value="false"/>
+                  <focusable value="false"/>
+                  <font name="Roboto Light" size="18" style="0"/>
+                  <foreground color="-1"/>
+                  <hideActionText value="false"/>
+                  <horizontalAlignment value="2"/>
+                  <horizontalTextPosition value="4"/>
+                  <icon value="src/iconsTabs/registro.png"/>
+                  <iconTextGap value="30"/>
+                  <opaque value="false"/>
+                  <preferredSize width="250" height="60"/>
+                  <text value="Registros"/>
+                </properties>
+              </component>
             </children>
           </grid>
         </children>
@@ -747,16 +769,16 @@
                                       <text value=""/>
                                     </properties>
                                   </component>
-                                  <component id="f1920" class="javax.swing.JLabel">
+                                  <component id="f1920" class="javax.swing.JLabel" binding="tripGasoline2">
                                     <constraints/>
                                     <properties>
                                       <font name="Roboto Light" size="16" style="1"/>
                                       <foreground color="-15119296"/>
                                       <preferredSize width="150" height="30"/>
-                                      <text value=""/>
+                                      <text value="0"/>
                                     </properties>
                                   </component>
-                                  <component id="b4e77" class="javax.swing.JButton">
+                                  <component id="b4e77" class="javax.swing.JButton" binding="startTripButton2">
                                     <constraints/>
                                     <properties>
                                       <autoscrolls value="false"/>
@@ -766,7 +788,7 @@
                                       <text value="Iniciar"/>
                                     </properties>
                                   </component>
-                                  <component id="cd865" class="javax.swing.JButton">
+                                  <component id="cd865" class="javax.swing.JButton" binding="recargeTrip2">
                                     <constraints/>
                                     <properties>
                                       <autoscrolls value="false"/>
@@ -821,7 +843,7 @@
                                           <text value=""/>
                                         </properties>
                                       </component>
-                                      <component id="5a928" class="javax.swing.JLabel">
+                                      <component id="5a928" class="javax.swing.JLabel" binding="tripDistance2">
                                         <constraints/>
                                         <properties>
                                           <font name="Roboto Light" size="16" style="1"/>
@@ -839,7 +861,7 @@
                                     </properties>
                                     <border type="empty"/>
                                     <children>
-                                      <component id="dd29f" class="javax.swing.JLabel">
+                                      <component id="dd29f" class="javax.swing.JLabel" binding="vehicleLabel2">
                                         <constraints/>
                                         <properties>
                                           <alignmentX value="0.0"/>
@@ -887,7 +909,7 @@
                                   <text value="0"/>
                                 </properties>
                               </component>
-                              <component id="b5d79" class="javax.swing.JLabel">
+                              <component id="b5d79" class="javax.swing.JLabel" binding="tripGasoline3">
                                 <constraints/>
                                 <properties>
                                   <font name="Roboto Light" size="16" style="1"/>
@@ -896,7 +918,7 @@
                                   <text value="0"/>
                                 </properties>
                               </component>
-                              <component id="adb2" class="javax.swing.JButton">
+                              <component id="adb2" class="javax.swing.JButton" binding="startTripButton3">
                                 <constraints/>
                                 <properties>
                                   <autoscrolls value="false"/>
@@ -906,7 +928,7 @@
                                   <text value="Iniciar"/>
                                 </properties>
                               </component>
-                              <component id="31fa6" class="javax.swing.JButton">
+                              <component id="31fa6" class="javax.swing.JButton" binding="recargeTrip3">
                                 <constraints/>
                                 <properties>
                                   <autoscrolls value="false"/>
@@ -961,7 +983,7 @@
                                       <text value=""/>
                                     </properties>
                                   </component>
-                                  <component id="dade0" class="javax.swing.JLabel">
+                                  <component id="dade0" class="javax.swing.JLabel" binding="tripDistance3">
                                     <constraints/>
                                     <properties>
                                       <font name="Roboto Light" size="16" style="1"/>
@@ -979,7 +1001,7 @@
                                 </properties>
                                 <border type="empty"/>
                                 <children>
-                                  <component id="16220" class="javax.swing.JLabel">
+                                  <component id="16220" class="javax.swing.JLabel" binding="vehicleLabel3">
                                     <constraints/>
                                     <properties>
                                       <alignmentX value="0.0"/>
@@ -1005,6 +1027,14 @@
                 </children>
               </grid>
             </children>
+          </grid>
+          <grid id="17f19" layout-manager="BorderLayout" hgap="0" vgap="0">
+            <constraints>
+              <card name="register"/>
+            </constraints>
+            <properties/>
+            <border type="none"/>
+            <children/>
           </grid>
         </children>
       </grid>

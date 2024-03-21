@@ -2,6 +2,7 @@ package Classes;
 
 import UI.AppUI;
 
+import javax.swing.*;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -16,6 +17,9 @@ public class Data {
     public static int Pilots = 3;
     public static List<Destines> destinesList = new ArrayList<>();
     public static List<Register> registerList = new ArrayList<>();
+    public static List<Trip> tripList = new ArrayList<>();
+    public static List<Destines> pilotList = new ArrayList<>();
+
     public final List<vehicle> vehicleList = List.of(new vehicle("Motocicleta 1", typeVehicle.Motorcycle),
             new vehicle("Motocicleta 1", typeVehicle.Motorcycle),
             new vehicle("Motocicleta 2", typeVehicle.Motorcycle),
