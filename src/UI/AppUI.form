@@ -528,8 +528,483 @@
               <background color="-1447447"/>
               <opaque value="true"/>
             </properties>
-            <border type="none"/>
-            <children/>
+            <border type="empty">
+              <title-color color="-5194043"/>
+              <size top="20" left="20" bottom="20" right="20"/>
+            </border>
+            <children>
+              <component id="32c53" class="javax.swing.JLabel">
+                <constraints border-constraint="North"/>
+                <properties>
+                  <alignmentX value="0.0"/>
+                  <font name="Segoe UI" size="36" style="1"/>
+                  <foreground color="-15583446"/>
+                  <text value="Viajes actuales"/>
+                </properties>
+              </component>
+              <grid id="6a881" layout-manager="BorderLayout" hgap="0" vgap="0">
+                <constraints border-constraint="Center"/>
+                <properties>
+                  <opaque value="false"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <grid id="2c99b" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="2">
+                    <constraints border-constraint="South"/>
+                    <properties>
+                      <opaque value="false"/>
+                      <preferredSize width="0" height="60"/>
+                    </properties>
+                    <border type="none"/>
+                    <children>
+                      <component id="d7c45" class="javax.swing.JButton" binding="initAllTripsButton">
+                        <constraints/>
+                        <properties>
+                          <autoscrolls value="false"/>
+                          <background color="-15119296"/>
+                          <foreground color="-1"/>
+                          <preferredSize width="200" height="50"/>
+                          <text value="Iniciar todos"/>
+                        </properties>
+                      </component>
+                    </children>
+                  </grid>
+                  <grid id="bc3d4" layout-manager="FlowLayout" hgap="5" vgap="7" flow-align="1">
+                    <constraints border-constraint="Center"/>
+                    <properties>
+                      <opaque value="false"/>
+                    </properties>
+                    <border type="none"/>
+                    <children>
+                      <grid id="5fa0b" layout-manager="BorderLayout" hgap="0" vgap="0">
+                        <constraints/>
+                        <properties>
+                          <opaque value="false"/>
+                          <preferredSize width="700" height="140"/>
+                        </properties>
+                        <border type="none"/>
+                        <children>
+                          <grid id="794a2" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+                            <constraints border-constraint="West"/>
+                            <properties>
+                              <opaque value="false"/>
+                              <preferredSize width="200" height="0"/>
+                            </properties>
+                            <border type="none"/>
+                            <children>
+                              <component id="3e74e" class="javax.swing.JLabel" binding="tripVehicle1">
+                                <constraints/>
+                                <properties>
+                                  <font name="Roboto Light" size="16" style="1"/>
+                                  <foreground color="-15119296"/>
+                                  <preferredSize width="150" height="30"/>
+                                  <text value="0"/>
+                                </properties>
+                              </component>
+                              <component id="3b02b" class="javax.swing.JLabel" binding="tripGasoline1">
+                                <constraints/>
+                                <properties>
+                                  <font name="Roboto Light" size="16" style="1"/>
+                                  <foreground color="-15119296"/>
+                                  <preferredSize width="150" height="30"/>
+                                  <text value="0"/>
+                                </properties>
+                              </component>
+                              <component id="bbd28" class="javax.swing.JButton" binding="startTripButton1">
+                                <constraints/>
+                                <properties>
+                                  <autoscrolls value="false"/>
+                                  <background color="-9203918"/>
+                                  <foreground color="-1"/>
+                                  <preferredSize width="80" height="50"/>
+                                  <text value="Iniciar"/>
+                                </properties>
+                              </component>
+                              <component id="c16f" class="javax.swing.JButton" binding="recargeTrip1">
+                                <constraints/>
+                                <properties>
+                                  <autoscrolls value="false"/>
+                                  <background color="-9203918"/>
+                                  <foreground color="-1"/>
+                                  <preferredSize width="90" height="50"/>
+                                  <text value="Recargar"/>
+                                </properties>
+                              </component>
+                            </children>
+                          </grid>
+                          <grid id="804a6" layout-manager="BorderLayout" hgap="0" vgap="0">
+                            <constraints border-constraint="Center"/>
+                            <properties>
+                              <opaque value="false"/>
+                              <preferredSize width="0" height="40"/>
+                            </properties>
+                            <border type="none"/>
+                            <children>
+                              <grid id="2362e" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+                                <constraints border-constraint="North"/>
+                                <properties>
+                                  <opaque value="false"/>
+                                  <preferredSize width="0" height="40"/>
+                                </properties>
+                                <border type="none"/>
+                                <children>
+                                  <component id="41090" class="javax.swing.JLabel">
+                                    <constraints/>
+                                    <properties>
+                                      <font name="Roboto Light" size="18" style="1"/>
+                                      <foreground color="-15119296"/>
+                                      <preferredSize width="90" height="30"/>
+                                      <text value="Viaje No.1"/>
+                                    </properties>
+                                  </component>
+                                  <component id="ef57f" class="javax.swing.JLabel" binding="tripStartLabel">
+                                    <constraints/>
+                                    <properties>
+                                      <font name="Roboto Light" size="16" style="1"/>
+                                      <foreground color="-15119296"/>
+                                      <preferredSize width="140" height="30"/>
+                                      <text value=""/>
+                                    </properties>
+                                  </component>
+                                  <component id="5542d" class="javax.swing.JLabel" binding="tripEndLabel">
+                                    <constraints/>
+                                    <properties>
+                                      <font name="Roboto Light" size="16" style="1"/>
+                                      <foreground color="-15119296"/>
+                                      <preferredSize width="140" height="30"/>
+                                      <text value=""/>
+                                    </properties>
+                                  </component>
+                                  <component id="bd67" class="javax.swing.JLabel" binding="tripDistance1">
+                                    <constraints/>
+                                    <properties>
+                                      <font name="Roboto Light" size="16" style="1"/>
+                                      <foreground color="-15119296"/>
+                                      <preferredSize width="100" height="30"/>
+                                      <text value=""/>
+                                    </properties>
+                                  </component>
+                                </children>
+                              </grid>
+                              <grid id="9f600" layout-manager="FlowLayout" hgap="5" vgap="20" flow-align="0">
+                                <constraints border-constraint="Center"/>
+                                <properties>
+                                  <opaque value="false"/>
+                                </properties>
+                                <border type="empty"/>
+                                <children>
+                                  <component id="dea38" class="javax.swing.JLabel" binding="vehicleLabel1">
+                                    <constraints/>
+                                    <properties>
+                                      <alignmentX value="0.0"/>
+                                      <autoscrolls value="false"/>
+                                      <background color="-9203918"/>
+                                      <inheritsPopupMenu value="true"/>
+                                      <opaque value="false"/>
+                                      <preferredSize width="130" height="60"/>
+                                      <text value=""/>
+                                      <verifyInputWhenFocusTarget value="false"/>
+                                      <verticalAlignment value="0"/>
+                                      <visible value="true"/>
+                                    </properties>
+                                  </component>
+                                </children>
+                              </grid>
+                            </children>
+                          </grid>
+                        </children>
+                      </grid>
+                      <grid id="73f35" layout-manager="BorderLayout" hgap="0" vgap="0">
+                        <constraints/>
+                        <properties>
+                          <opaque value="false"/>
+                          <preferredSize width="700" height="140"/>
+                        </properties>
+                        <border type="none"/>
+                        <children>
+                          <grid id="2784b" layout-manager="BorderLayout" hgap="0" vgap="0">
+                            <constraints border-constraint="Center"/>
+                            <properties>
+                              <opaque value="false"/>
+                              <preferredSize width="700" height="140"/>
+                            </properties>
+                            <border type="none"/>
+                            <children>
+                              <grid id="df34a" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+                                <constraints border-constraint="West"/>
+                                <properties>
+                                  <opaque value="false"/>
+                                  <preferredSize width="200" height="0"/>
+                                </properties>
+                                <border type="none"/>
+                                <children>
+                                  <component id="98a98" class="javax.swing.JLabel" binding="tripvehicle2">
+                                    <constraints/>
+                                    <properties>
+                                      <font name="Roboto Light" size="16" style="1"/>
+                                      <foreground color="-15119296"/>
+                                      <preferredSize width="150" height="30"/>
+                                      <text value=""/>
+                                    </properties>
+                                  </component>
+                                  <component id="f1920" class="javax.swing.JLabel">
+                                    <constraints/>
+                                    <properties>
+                                      <font name="Roboto Light" size="16" style="1"/>
+                                      <foreground color="-15119296"/>
+                                      <preferredSize width="150" height="30"/>
+                                      <text value=""/>
+                                    </properties>
+                                  </component>
+                                  <component id="b4e77" class="javax.swing.JButton">
+                                    <constraints/>
+                                    <properties>
+                                      <autoscrolls value="false"/>
+                                      <background color="-9203918"/>
+                                      <foreground color="-1"/>
+                                      <preferredSize width="80" height="50"/>
+                                      <text value="Iniciar"/>
+                                    </properties>
+                                  </component>
+                                  <component id="cd865" class="javax.swing.JButton">
+                                    <constraints/>
+                                    <properties>
+                                      <autoscrolls value="false"/>
+                                      <background color="-9203918"/>
+                                      <foreground color="-1"/>
+                                      <preferredSize width="90" height="50"/>
+                                      <text value="Recargar"/>
+                                    </properties>
+                                  </component>
+                                </children>
+                              </grid>
+                              <grid id="7231b" layout-manager="BorderLayout" hgap="0" vgap="0">
+                                <constraints border-constraint="Center"/>
+                                <properties>
+                                  <opaque value="false"/>
+                                  <preferredSize width="0" height="40"/>
+                                </properties>
+                                <border type="none"/>
+                                <children>
+                                  <grid id="d179c" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+                                    <constraints border-constraint="North"/>
+                                    <properties>
+                                      <opaque value="false"/>
+                                      <preferredSize width="0" height="40"/>
+                                    </properties>
+                                    <border type="none"/>
+                                    <children>
+                                      <component id="2d9b0" class="javax.swing.JLabel">
+                                        <constraints/>
+                                        <properties>
+                                          <font name="Roboto Light" size="18" style="1"/>
+                                          <foreground color="-15119296"/>
+                                          <preferredSize width="90" height="30"/>
+                                          <text value="Viaje No.2"/>
+                                        </properties>
+                                      </component>
+                                      <component id="6b3b1" class="javax.swing.JLabel">
+                                        <constraints/>
+                                        <properties>
+                                          <font name="Roboto Light" size="16" style="1"/>
+                                          <foreground color="-15119296"/>
+                                          <preferredSize width="140" height="30"/>
+                                          <text value=""/>
+                                        </properties>
+                                      </component>
+                                      <component id="f300d" class="javax.swing.JLabel">
+                                        <constraints/>
+                                        <properties>
+                                          <font name="Roboto Light" size="16" style="1"/>
+                                          <foreground color="-15119296"/>
+                                          <preferredSize width="140" height="30"/>
+                                          <text value=""/>
+                                        </properties>
+                                      </component>
+                                      <component id="5a928" class="javax.swing.JLabel">
+                                        <constraints/>
+                                        <properties>
+                                          <font name="Roboto Light" size="16" style="1"/>
+                                          <foreground color="-15119296"/>
+                                          <preferredSize width="100" height="30"/>
+                                          <text value=""/>
+                                        </properties>
+                                      </component>
+                                    </children>
+                                  </grid>
+                                  <grid id="32474" layout-manager="FlowLayout" hgap="5" vgap="20" flow-align="0">
+                                    <constraints border-constraint="Center"/>
+                                    <properties>
+                                      <opaque value="false"/>
+                                    </properties>
+                                    <border type="empty"/>
+                                    <children>
+                                      <component id="dd29f" class="javax.swing.JLabel">
+                                        <constraints/>
+                                        <properties>
+                                          <alignmentX value="0.0"/>
+                                          <autoscrolls value="false"/>
+                                          <background color="-9203918"/>
+                                          <inheritsPopupMenu value="true"/>
+                                          <opaque value="false"/>
+                                          <preferredSize width="130" height="60"/>
+                                          <text value=""/>
+                                          <verifyInputWhenFocusTarget value="false"/>
+                                          <verticalAlignment value="0"/>
+                                          <visible value="true"/>
+                                        </properties>
+                                      </component>
+                                    </children>
+                                  </grid>
+                                </children>
+                              </grid>
+                            </children>
+                          </grid>
+                        </children>
+                      </grid>
+                      <grid id="c190c" layout-manager="BorderLayout" hgap="0" vgap="0">
+                        <constraints/>
+                        <properties>
+                          <opaque value="false"/>
+                          <preferredSize width="700" height="140"/>
+                        </properties>
+                        <border type="none"/>
+                        <children>
+                          <grid id="abb89" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+                            <constraints border-constraint="West"/>
+                            <properties>
+                              <opaque value="false"/>
+                              <preferredSize width="200" height="0"/>
+                            </properties>
+                            <border type="none"/>
+                            <children>
+                              <component id="1aedf" class="javax.swing.JLabel">
+                                <constraints/>
+                                <properties>
+                                  <font name="Roboto Light" size="16" style="1"/>
+                                  <foreground color="-15119296"/>
+                                  <preferredSize width="150" height="30"/>
+                                  <text value="0"/>
+                                </properties>
+                              </component>
+                              <component id="b5d79" class="javax.swing.JLabel">
+                                <constraints/>
+                                <properties>
+                                  <font name="Roboto Light" size="16" style="1"/>
+                                  <foreground color="-15119296"/>
+                                  <preferredSize width="150" height="30"/>
+                                  <text value="0"/>
+                                </properties>
+                              </component>
+                              <component id="adb2" class="javax.swing.JButton">
+                                <constraints/>
+                                <properties>
+                                  <autoscrolls value="false"/>
+                                  <background color="-9203918"/>
+                                  <foreground color="-1"/>
+                                  <preferredSize width="80" height="50"/>
+                                  <text value="Iniciar"/>
+                                </properties>
+                              </component>
+                              <component id="31fa6" class="javax.swing.JButton">
+                                <constraints/>
+                                <properties>
+                                  <autoscrolls value="false"/>
+                                  <background color="-9203918"/>
+                                  <foreground color="-1"/>
+                                  <preferredSize width="90" height="50"/>
+                                  <text value="Recargar"/>
+                                </properties>
+                              </component>
+                            </children>
+                          </grid>
+                          <grid id="f42aa" layout-manager="BorderLayout" hgap="0" vgap="0">
+                            <constraints border-constraint="Center"/>
+                            <properties>
+                              <opaque value="false"/>
+                              <preferredSize width="0" height="40"/>
+                            </properties>
+                            <border type="none"/>
+                            <children>
+                              <grid id="20c51" layout-manager="FlowLayout" hgap="5" vgap="5" flow-align="1">
+                                <constraints border-constraint="North"/>
+                                <properties>
+                                  <opaque value="false"/>
+                                  <preferredSize width="0" height="40"/>
+                                </properties>
+                                <border type="none"/>
+                                <children>
+                                  <component id="c4449" class="javax.swing.JLabel">
+                                    <constraints/>
+                                    <properties>
+                                      <font name="Roboto Light" size="18" style="1"/>
+                                      <foreground color="-15119296"/>
+                                      <preferredSize width="90" height="30"/>
+                                      <text value="Viaje No.3"/>
+                                    </properties>
+                                  </component>
+                                  <component id="743ab" class="javax.swing.JLabel">
+                                    <constraints/>
+                                    <properties>
+                                      <font name="Roboto Light" size="16" style="1"/>
+                                      <foreground color="-15119296"/>
+                                      <preferredSize width="140" height="30"/>
+                                      <text value=""/>
+                                    </properties>
+                                  </component>
+                                  <component id="f2aeb" class="javax.swing.JLabel">
+                                    <constraints/>
+                                    <properties>
+                                      <font name="Roboto Light" size="16" style="1"/>
+                                      <foreground color="-15119296"/>
+                                      <preferredSize width="140" height="30"/>
+                                      <text value=""/>
+                                    </properties>
+                                  </component>
+                                  <component id="dade0" class="javax.swing.JLabel">
+                                    <constraints/>
+                                    <properties>
+                                      <font name="Roboto Light" size="16" style="1"/>
+                                      <foreground color="-15119296"/>
+                                      <preferredSize width="100" height="30"/>
+                                      <text value=""/>
+                                    </properties>
+                                  </component>
+                                </children>
+                              </grid>
+                              <grid id="42bc7" layout-manager="FlowLayout" hgap="5" vgap="20" flow-align="0">
+                                <constraints border-constraint="Center"/>
+                                <properties>
+                                  <opaque value="false"/>
+                                </properties>
+                                <border type="empty"/>
+                                <children>
+                                  <component id="16220" class="javax.swing.JLabel">
+                                    <constraints/>
+                                    <properties>
+                                      <alignmentX value="0.0"/>
+                                      <autoscrolls value="false"/>
+                                      <background color="-9203918"/>
+                                      <inheritsPopupMenu value="true"/>
+                                      <opaque value="false"/>
+                                      <preferredSize width="130" height="60"/>
+                                      <text value=""/>
+                                      <verifyInputWhenFocusTarget value="false"/>
+                                      <verticalAlignment value="0"/>
+                                      <visible value="true"/>
+                                    </properties>
+                                  </component>
+                                </children>
+                              </grid>
+                            </children>
+                          </grid>
+                        </children>
+                      </grid>
+                    </children>
+                  </grid>
+                </children>
+              </grid>
+            </children>
           </grid>
         </children>
       </grid>

@@ -15,6 +15,8 @@ import java.awt.event.*;
 import java.io.File;
 import java.util.Objects;
 
+import static java.lang.ClassLoader.getSystemResource;
+
 public class AppUI extends JFrame {
     private JPanel Manager;
     private JButton travelsButton;
@@ -33,7 +35,16 @@ public class AppUI extends JFrame {
     private JLabel startLabel;
     private JLabel endLabel;
     private JLabel distanceLabel;
-
+    private JButton initAllTripsButton;
+    private JLabel tripStartLabel;
+    private JLabel tripEndLabel;
+    private JLabel tripDistance1;
+    private JLabel tripVehicle1;
+    private JLabel tripGasoline1;
+    private JButton startTripButton1;
+    private JButton recargeTrip1;
+    private JLabel vehicleLabel1;
+    private JLabel tripvehicle2;
     private final Data baseData = new Data();
     public static DefaultTableModel model = new DefaultTableModel();
 
@@ -51,15 +62,20 @@ public class AppUI extends JFrame {
         setSize(1000, 600);
         setLocationRelativeTo(null);
         setVisible(true);
+        pack();
 
 
         UIManager.put("Button.select", new Color(0x436850));
+        vehicleLabel1.setIcon(new ImageIcon(getSystemResource("./src/vehiclesImage/vehiclePremium.png")));
 
         //Destines
         DestinesUI destinesUI = new DestinesUI();
         //Generate routes
         GenerateRoutesUi routesUi = new GenerateRoutesUi();
+        //Trips
+        TripsUI tripsUI = new TripsUI();
     }
+
 
     private class DestinesUI {
         DestinesUI() {
@@ -132,7 +148,7 @@ public class AppUI extends JFrame {
             setBorderColorOfComboBoxPopup(typeVehicleCombo);
 
             Pilots.setText(String.valueOf(Data.Pilots));
-            
+
             starTripCombo.addItemListener(e -> {
                 if (e.getStateChange() == ItemEvent.SELECTED) {
                     String selectTrip = Objects.requireNonNull(starTripCombo.getSelectedItem()).toString();
@@ -162,6 +178,47 @@ public class AppUI extends JFrame {
 
         }
     }
+
+    private class TripsUI {
+        private double distance = 100;
+        private int x = 5;
+        private double distanceRes = distance / (350 - x);
+        private Timer tripTimer1;
+
+        TripsUI() {
+            tripTimer1 = new Timer(10, new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    System.out.println(distanceRes);
+
+                    distance -= distanceRes;
+                    x += 1;
+                    if (x == 350) tripTimer1.stop();
+                    tripGasoline1.setText(String.format("%.2f", distance));
+                    SwingUtilities.invokeLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            vehicleLabel1.setLocation(x, 20);
+                            vehicleLabel1.repaint();
+                        }
+                    });
+                }
+            });
+
+            startTripButton1.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    tripTimer1.start();
+                }
+            });
+
+            recargeTrip1.addActionListener(e -> {
+                distance = 20;
+                tripGasoline1.setText(String.valueOf(distance));
+            });
+        }
+    }
+
 
     public static void setBorderColorOfComboBoxPopup(JComboBox<String> comboBox) {
         Object child = comboBox.getAccessibleContext().getAccessibleChild(0);
