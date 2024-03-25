@@ -14,11 +14,14 @@ import static java.awt.image.ImageObserver.ERROR;
 import static javax.swing.JOptionPane.showMessageDialog;
 
 public class Data {
-    public static int Pilots = 3;
     public static List<Destines> destinesList = new ArrayList<>();
     public static List<Register> registerList = new ArrayList<>();
-    public static List<Trip> tripList = new ArrayList<>();
-    public static List<Destines> pilotList = new ArrayList<>();
+    public static List<Trip> pilotList = new ArrayList<>(List.of(
+            new Trip(new Destines("", "", ""), new vehicle("", typeVehicle.Standard)),
+            new Trip(new Destines("", "", ""), new vehicle("", typeVehicle.Standard)),
+            new Trip(new Destines("", "", ""), new vehicle("", typeVehicle.Standard)))
+    );
+    public static java.util.List<TripAnimated> tripsAnimated;
 
     public final List<vehicle> vehicleList = List.of(new vehicle("Motocicleta 1", typeVehicle.Motorcycle),
             new vehicle("Motocicleta 1", typeVehicle.Motorcycle),
@@ -32,6 +35,10 @@ public class Data {
             new vehicle("Vehiculo premium 3", typeVehicle.Premium)
     );
 
+
+    public void chargeAnimated(java.util.List<TripAnimated> tripsAnimated) {
+        Data.tripsAnimated = tripsAnimated;
+    }
 
     public void loadDestines(String path) {
 

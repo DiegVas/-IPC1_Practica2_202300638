@@ -392,7 +392,7 @@
                           <font name="Consolas" size="16" style="0"/>
                           <foreground color="-15583446"/>
                           <preferredSize width="130" height="50"/>
-                          <text value="Distancia de:"/>
+                          <text value="Distancia de: Km"/>
                         </properties>
                       </component>
                       <component id="d8d55" class="javax.swing.JLabel" binding="distanceLabel">
@@ -614,13 +614,31 @@
                             </properties>
                             <border type="none"/>
                             <children>
-                              <component id="3e74e" class="javax.swing.JLabel" binding="tripVehicle1">
+                              <component id="7b436" class="javax.swing.JLabel">
                                 <constraints/>
                                 <properties>
                                   <font name="Roboto Light" size="16" style="1"/>
                                   <foreground color="-15119296"/>
-                                  <preferredSize width="150" height="30"/>
+                                  <preferredSize width="80" height="30"/>
+                                  <text value="Distancia"/>
+                                </properties>
+                              </component>
+                              <component id="3e74e" class="javax.swing.JLabel" binding="tripDistance1">
+                                <constraints/>
+                                <properties>
+                                  <font name="Roboto Light" size="16" style="1"/>
+                                  <foreground color="-15119296"/>
+                                  <preferredSize width="75" height="30"/>
                                   <text value="0"/>
+                                </properties>
+                              </component>
+                              <component id="86bc6" class="javax.swing.JLabel">
+                                <constraints/>
+                                <properties>
+                                  <font name="Roboto Light" size="16" style="1"/>
+                                  <foreground color="-15119296"/>
+                                  <preferredSize width="80" height="30"/>
+                                  <text value="Gasolina"/>
                                 </properties>
                               </component>
                               <component id="3b02b" class="javax.swing.JLabel" binding="tripGasoline1">
@@ -628,7 +646,7 @@
                                 <properties>
                                   <font name="Roboto Light" size="16" style="1"/>
                                   <foreground color="-15119296"/>
-                                  <preferredSize width="150" height="30"/>
+                                  <preferredSize width="75" height="30"/>
                                   <text value="0"/>
                                 </properties>
                               </component>
@@ -636,7 +654,8 @@
                                 <constraints/>
                                 <properties>
                                   <autoscrolls value="false"/>
-                                  <background color="-9203918"/>
+                                  <background color="-15119296"/>
+                                  <enabled value="true"/>
                                   <foreground color="-1"/>
                                   <preferredSize width="80" height="50"/>
                                   <text value="Iniciar"/>
@@ -646,7 +665,8 @@
                                 <constraints/>
                                 <properties>
                                   <autoscrolls value="false"/>
-                                  <background color="-9203918"/>
+                                  <background color="-15119296"/>
+                                  <enabled value="false"/>
                                   <foreground color="-1"/>
                                   <preferredSize width="90" height="50"/>
                                   <text value="Recargar"/>
@@ -697,7 +717,7 @@
                                       <text value=""/>
                                     </properties>
                                   </component>
-                                  <component id="bd67" class="javax.swing.JLabel" binding="tripDistance1">
+                                  <component id="bd67" class="javax.swing.JLabel" binding="tripVehicle1">
                                     <constraints/>
                                     <properties>
                                       <font name="Roboto Light" size="16" style="1"/>
@@ -708,7 +728,7 @@
                                   </component>
                                 </children>
                               </grid>
-                              <grid id="9f600" layout-manager="FlowLayout" hgap="5" vgap="20" flow-align="0">
+                              <grid id="9f600" layout-manager="FlowLayout" hgap="5" vgap="10" flow-align="0">
                                 <constraints border-constraint="Center"/>
                                 <properties>
                                   <opaque value="false"/>
@@ -723,7 +743,7 @@
                                       <background color="-9203918"/>
                                       <inheritsPopupMenu value="true"/>
                                       <opaque value="false"/>
-                                      <preferredSize width="130" height="60"/>
+                                      <preferredSize width="130" height="70"/>
                                       <text value=""/>
                                       <verifyInputWhenFocusTarget value="false"/>
                                       <verticalAlignment value="0"/>
@@ -760,13 +780,31 @@
                                 </properties>
                                 <border type="none"/>
                                 <children>
-                                  <component id="98a98" class="javax.swing.JLabel" binding="tripvehicle2">
+                                  <component id="c77f1" class="javax.swing.JLabel">
                                     <constraints/>
                                     <properties>
                                       <font name="Roboto Light" size="16" style="1"/>
                                       <foreground color="-15119296"/>
-                                      <preferredSize width="150" height="30"/>
-                                      <text value=""/>
+                                      <preferredSize width="80" height="30"/>
+                                      <text value="Distancia"/>
+                                    </properties>
+                                  </component>
+                                  <component id="98a98" class="javax.swing.JLabel" binding="tripDistance2">
+                                    <constraints/>
+                                    <properties>
+                                      <font name="Roboto Light" size="16" style="1"/>
+                                      <foreground color="-15119296"/>
+                                      <preferredSize width="75" height="30"/>
+                                      <text value="0"/>
+                                    </properties>
+                                  </component>
+                                  <component id="ecbe" class="javax.swing.JLabel">
+                                    <constraints/>
+                                    <properties>
+                                      <font name="Roboto Light" size="16" style="1"/>
+                                      <foreground color="-15119296"/>
+                                      <preferredSize width="80" height="30"/>
+                                      <text value="Gasolina"/>
                                     </properties>
                                   </component>
                                   <component id="f1920" class="javax.swing.JLabel" binding="tripGasoline2">
@@ -774,7 +812,7 @@
                                     <properties>
                                       <font name="Roboto Light" size="16" style="1"/>
                                       <foreground color="-15119296"/>
-                                      <preferredSize width="150" height="30"/>
+                                      <preferredSize width="75" height="30"/>
                                       <text value="0"/>
                                     </properties>
                                   </component>
@@ -782,7 +820,8 @@
                                     <constraints/>
                                     <properties>
                                       <autoscrolls value="false"/>
-                                      <background color="-9203918"/>
+                                      <background color="-15119296"/>
+                                      <enabled value="true"/>
                                       <foreground color="-1"/>
                                       <preferredSize width="80" height="50"/>
                                       <text value="Iniciar"/>
@@ -792,7 +831,8 @@
                                     <constraints/>
                                     <properties>
                                       <autoscrolls value="false"/>
-                                      <background color="-9203918"/>
+                                      <background color="-15119296"/>
+                                      <enabled value="false"/>
                                       <foreground color="-1"/>
                                       <preferredSize width="90" height="50"/>
                                       <text value="Recargar"/>
@@ -843,7 +883,7 @@
                                           <text value=""/>
                                         </properties>
                                       </component>
-                                      <component id="5a928" class="javax.swing.JLabel" binding="tripDistance2">
+                                      <component id="5a928" class="javax.swing.JLabel" binding="tripVehicle2">
                                         <constraints/>
                                         <properties>
                                           <font name="Roboto Light" size="16" style="1"/>
@@ -869,7 +909,7 @@
                                           <background color="-9203918"/>
                                           <inheritsPopupMenu value="true"/>
                                           <opaque value="false"/>
-                                          <preferredSize width="130" height="60"/>
+                                          <preferredSize width="130" height="70"/>
                                           <text value=""/>
                                           <verifyInputWhenFocusTarget value="false"/>
                                           <verticalAlignment value="0"/>
@@ -900,13 +940,31 @@
                             </properties>
                             <border type="none"/>
                             <children>
-                              <component id="1aedf" class="javax.swing.JLabel">
+                              <component id="88b5a" class="javax.swing.JLabel">
                                 <constraints/>
                                 <properties>
                                   <font name="Roboto Light" size="16" style="1"/>
                                   <foreground color="-15119296"/>
-                                  <preferredSize width="150" height="30"/>
+                                  <preferredSize width="80" height="30"/>
+                                  <text value="Distancia"/>
+                                </properties>
+                              </component>
+                              <component id="1aedf" class="javax.swing.JLabel" binding="tripDistance3">
+                                <constraints/>
+                                <properties>
+                                  <font name="Roboto Light" size="16" style="1"/>
+                                  <foreground color="-15119296"/>
+                                  <preferredSize width="75" height="30"/>
                                   <text value="0"/>
+                                </properties>
+                              </component>
+                              <component id="e7387" class="javax.swing.JLabel">
+                                <constraints/>
+                                <properties>
+                                  <font name="Roboto Light" size="16" style="1"/>
+                                  <foreground color="-15119296"/>
+                                  <preferredSize width="80" height="30"/>
+                                  <text value="Gasolina"/>
                                 </properties>
                               </component>
                               <component id="b5d79" class="javax.swing.JLabel" binding="tripGasoline3">
@@ -914,7 +972,7 @@
                                 <properties>
                                   <font name="Roboto Light" size="16" style="1"/>
                                   <foreground color="-15119296"/>
-                                  <preferredSize width="150" height="30"/>
+                                  <preferredSize width="75" height="30"/>
                                   <text value="0"/>
                                 </properties>
                               </component>
@@ -922,7 +980,8 @@
                                 <constraints/>
                                 <properties>
                                   <autoscrolls value="false"/>
-                                  <background color="-9203918"/>
+                                  <background color="-15119296"/>
+                                  <enabled value="true"/>
                                   <foreground color="-1"/>
                                   <preferredSize width="80" height="50"/>
                                   <text value="Iniciar"/>
@@ -932,7 +991,8 @@
                                 <constraints/>
                                 <properties>
                                   <autoscrolls value="false"/>
-                                  <background color="-9203918"/>
+                                  <background color="-15119296"/>
+                                  <enabled value="false"/>
                                   <foreground color="-1"/>
                                   <preferredSize width="90" height="50"/>
                                   <text value="Recargar"/>
@@ -983,7 +1043,7 @@
                                       <text value=""/>
                                     </properties>
                                   </component>
-                                  <component id="dade0" class="javax.swing.JLabel" binding="tripDistance3">
+                                  <component id="dade0" class="javax.swing.JLabel" binding="tripVehicle3">
                                     <constraints/>
                                     <properties>
                                       <font name="Roboto Light" size="16" style="1"/>
@@ -1009,7 +1069,7 @@
                                       <background color="-9203918"/>
                                       <inheritsPopupMenu value="true"/>
                                       <opaque value="false"/>
-                                      <preferredSize width="130" height="60"/>
+                                      <preferredSize width="130" height="70"/>
                                       <text value=""/>
                                       <verifyInputWhenFocusTarget value="false"/>
                                       <verticalAlignment value="0"/>
