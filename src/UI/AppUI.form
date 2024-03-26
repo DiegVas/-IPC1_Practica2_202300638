@@ -1088,13 +1088,30 @@
               </grid>
             </children>
           </grid>
-          <grid id="17f19" layout-manager="BorderLayout" hgap="0" vgap="0">
+          <grid id="17f19" binding="registerTrips" layout-manager="FlowLayout" hgap="5" vgap="50" flow-align="1">
             <constraints>
               <card name="register"/>
             </constraints>
-            <properties/>
+            <properties>
+              <background color="-1"/>
+              <opaque value="true"/>
+            </properties>
             <border type="none"/>
-            <children/>
+            <children>
+              <scrollpane id="953f3">
+                <constraints/>
+                <properties>
+                  <preferredSize width="700" height="500"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="7647c" class="javax.swing.JTable" binding="table1" default-binding="true">
+                    <constraints/>
+                    <properties/>
+                  </component>
+                </children>
+              </scrollpane>
+            </children>
           </grid>
         </children>
       </grid>

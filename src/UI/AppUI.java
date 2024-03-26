@@ -12,6 +12,7 @@ import javax.swing.table.JTableHeader;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -57,16 +58,18 @@ public class AppUI extends JFrame {
     private JLabel tripDistance1;
     private JLabel tripDistance2;
     private JLabel tripDistance3;
+    private JPanel registerTrips;
+    private JTable table1;
     private final Data baseData = new Data();
     public static DefaultTableModel model = new DefaultTableModel();
 
     public static DefaultComboBoxModel<String> vehicleComboModel = new DefaultComboBoxModel<>(), starTripModel = new DefaultComboBoxModel<>(), endTripModel = new DefaultComboBoxModel<>();
 
-    public java.util.List<TripAnimated> tripsAnimated = java.util.List.of(
-            new TripAnimated(vehicleLabel1, tripDistance1, tripGasoline1, tripVehicle1, startTripButton1, recargeTrip1, new Trip(new Destines("A", "B", "100"), new vehicle("Motocicleta 1", typeVehicle.Motorcycle))),
-            new TripAnimated(vehicleLabel2, tripDistance2, tripGasoline2, tripVehicle2, startTripButton2, recargeTrip2, new Trip(new Destines("A", "B", "100"), new vehicle("Motocicleta 1", typeVehicle.Motorcycle))),
-            new TripAnimated(vehicleLabel3, tripDistance3, tripGasoline3, tripVehicle3, startTripButton3, recargeTrip3, new Trip(new Destines("A", "B", "100"), new vehicle("Motocicleta 1", typeVehicle.Motorcycle)))
-    );
+    public List<TripAnimated> tripsAnimated = new ArrayList<>(List.of(
+            new TripAnimated(vehicleLabel1, tripDistance1, tripGasoline1, tripVehicle1, Pilots, startTripButton1, recargeTrip1, generateButton, new Trip(new Destines("A", "B", "0"), new vehicle("", typeVehicle.None)), 0),
+            new TripAnimated(vehicleLabel2, tripDistance2, tripGasoline2, tripVehicle2, Pilots, startTripButton2, recargeTrip2, generateButton, new Trip(new Destines("A", "B", "0"), new vehicle("", typeVehicle.None)), 1),
+            new TripAnimated(vehicleLabel3, tripDistance3, tripGasoline3, tripVehicle3, Pilots, startTripButton3, recargeTrip3, generateButton, new Trip(new Destines("A", "B", "0"), new vehicle("", typeVehicle.None)), 2)
+    ));
 
 
     public AppUI() {
@@ -170,8 +173,6 @@ public class AppUI extends JFrame {
             setBorderColorOfComboBoxPopup(endTripCombo);
             setBorderColorOfComboBoxPopup(typeVehicleCombo);
 
-            // Pilots.setText(String.valueOf(Data.Pilots));
-
             starTripCombo.addItemListener(e -> {
                 if (e.getStateChange() == ItemEvent.SELECTED) {
                     String selectTrip = Objects.requireNonNull(starTripCombo.getSelectedItem()).toString();
@@ -201,17 +202,27 @@ public class AppUI extends JFrame {
                 indexFound = !availablePilots.isEmpty() ? pilotList.indexOf(availablePilots.getFirst()) : -1;
 
                 Pilots.setText(String.valueOf(availablePilots.size() - 1));
+                TripAnimated oldTripAnimated = Data.tripsAnimated.get(indexFound);
+                pilotList.set(indexFound, new Trip(destines, vehicle));
+                TripAnimated newAnimated = new TripAnimated(
+                        oldTripAnimated.vehicleLabel,
+                        oldTripAnimated.distanceLabel,
+                        oldTripAnimated.gasolineLabel,
+                        oldTripAnimated.tripVehicle, oldTripAnimated.pilotsLabel,
+                        oldTripAnimated.inittripButton,
+                        oldTripAnimated.recargeGasolineButton, oldTripAnimated.generateButton,
+                        pilotList.get(indexFound), indexFound
+                );
+
+                Data.tripsAnimated.set(indexFound, newAnimated);
 
                 if (availablePilots.size() - 1 == 0) {
                     Pilots.setForeground(Color.DARK_GRAY);
                     generateButton.setBackground(Color.gray);
                     generateButton.setForeground(Color.DARK_GRAY);
+                    generateButton.setEnabled(false);
                     JOptionPane.showMessageDialog(null, "No hay pilotos disponibles");
-                    return;
                 }
-
-                pilotList.set(indexFound, new Trip(destines, vehicle));
-
             });
 
         }
@@ -222,7 +233,7 @@ public class AppUI extends JFrame {
     private class TripUI {
         TripUI() {
             initAllTripsButton.addActionListener(e -> {
-                for (TripAnimated trip : tripsAnimated) trip.tripTimer.start();
+                for (TripAnimated trip : Data.tripsAnimated) trip.tripTimer.start();
             });
         }
     }
