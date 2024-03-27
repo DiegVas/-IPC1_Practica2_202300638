@@ -3,18 +3,15 @@ package Classes;
 import UI.AppUI;
 
 import javax.swing.*;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 import static java.awt.image.ImageObserver.ERROR;
 import static javax.swing.JOptionPane.showMessageDialog;
 
-public class Data {
-    public static List<Destines> destinesList = new ArrayList<>();
+public class Data implements Serializable {
+    transient public static List<Destines> destinesList = new ArrayList<>();
     public static List<Register> registerList = new ArrayList<>();
     public static List<Trip> pilotList = new ArrayList<>(List.of(
             new Trip(new Destines("", "", ""), new vehicle("", typeVehicle.Standard)),
@@ -23,7 +20,7 @@ public class Data {
     );
     public static java.util.List<TripAnimated> tripsAnimated;
 
-    public final List<vehicle> vehicleList = List.of(new vehicle("Motocicleta 1", typeVehicle.Motorcycle),
+    transient public final List<vehicle> vehicleList = List.of(new vehicle("Motocicleta 1", typeVehicle.Motorcycle),
             new vehicle("Motocicleta 1", typeVehicle.Motorcycle),
             new vehicle("Motocicleta 2", typeVehicle.Motorcycle),
             new vehicle("Motocicleta 3", typeVehicle.Motorcycle),

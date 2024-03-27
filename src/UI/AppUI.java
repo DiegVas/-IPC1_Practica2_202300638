@@ -62,6 +62,7 @@ public class AppUI extends JFrame {
     private JTable table1;
     private final Data baseData = new Data();
     public static DefaultTableModel model = new DefaultTableModel();
+    public static DefaultTableModel registerModel = new DefaultTableModel();
 
     public static DefaultComboBoxModel<String> vehicleComboModel = new DefaultComboBoxModel<>(), starTripModel = new DefaultComboBoxModel<>(), endTripModel = new DefaultComboBoxModel<>();
 
@@ -98,6 +99,8 @@ public class AppUI extends JFrame {
         new GenerateRoutesUi();
         //Trips
         new TripUI();
+        //Register
+        new RegisterUI();
 
     }
 
@@ -112,14 +115,14 @@ public class AppUI extends JFrame {
             destinyTable.setFont(new Font("Robot", Font.PLAIN, 14));
             destinyTable.setForeground(new Color(0x12372A));
             destinyTable.setRowHeight(25);
+            destinyTable.getColumnModel().getColumn(0).setPreferredWidth(40);
 
             JTableHeader header = destinyTable.getTableHeader();
             header.setBackground(new Color(0x436850));
             header.setForeground(Color.white);
             header.setPreferredSize(new Dimension(100, 30));
             header.setFont(new Font("Roboto", Font.BOLD, 15));
-
-
+            
             travelsButton.addActionListener(e -> ((CardLayout) panelLayout.getLayout()).show(panelLayout, "destiny"));
             editDestinyButton.addActionListener(e -> ((CardLayout) panelLayout.getLayout()).show(panelLayout, "editDestiny"));
             tripButton.addActionListener(e -> ((CardLayout) panelLayout.getLayout()).show(panelLayout, "trips"));
@@ -235,6 +238,26 @@ public class AppUI extends JFrame {
             initAllTripsButton.addActionListener(e -> {
                 for (TripAnimated trip : Data.tripsAnimated) trip.tripTimer.start();
             });
+        }
+    }
+
+    private class RegisterUI {
+        RegisterUI() {
+            Object[] headers = {"Id", "Inicio", "Final", "Distancia", "Vehiculo", "Consumo"};
+            registerModel.setColumnIdentifiers(headers);
+            table1.setModel(registerModel);
+
+            table1.setFont(new Font("Robot", Font.PLAIN, 14));
+            table1.setForeground(new Color(0x12372A));
+            table1.setRowHeight(25);
+            table1.getColumnModel().getColumn(0).setPreferredWidth(40);
+
+            JTableHeader header = table1.getTableHeader();
+            header.setBackground(new Color(0x436850));
+            header.setForeground(Color.white);
+            header.setPreferredSize(new Dimension(100, 30));
+            header.setFont(new Font("Roboto", Font.BOLD, 15));
+
         }
     }
 

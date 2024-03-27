@@ -297,12 +297,13 @@
                       <component id="7896a" class="javax.swing.JTable" binding="destinyTable">
                         <constraints/>
                         <properties>
+                          <autoCreateColumnsFromModel value="true"/>
                           <autoResizeMode value="2"/>
                           <background color="-1"/>
                           <focusable value="true"/>
                           <gridColor color="-9203918"/>
                           <name value=""/>
-                          <opaque value="false"/>
+                          <opaque value="true"/>
                           <selectionBackground color="-5391201"/>
                           <toolTipText value="Hola&#10;"/>
                         </properties>
@@ -1088,7 +1089,7 @@
               </grid>
             </children>
           </grid>
-          <grid id="17f19" binding="registerTrips" layout-manager="FlowLayout" hgap="5" vgap="50" flow-align="1">
+          <grid id="17f19" binding="registerTrips" layout-manager="BorderLayout" hgap="0" vgap="0">
             <constraints>
               <card name="register"/>
             </constraints>
@@ -1096,10 +1097,12 @@
               <background color="-1"/>
               <opaque value="true"/>
             </properties>
-            <border type="none"/>
+            <border type="empty">
+              <size top="20" left="20" bottom="20" right="20"/>
+            </border>
             <children>
               <scrollpane id="953f3">
-                <constraints/>
+                <constraints border-constraint="South"/>
                 <properties>
                   <preferredSize width="700" height="500"/>
                 </properties>
@@ -1111,6 +1114,15 @@
                   </component>
                 </children>
               </scrollpane>
+              <component id="bfe82" class="javax.swing.JLabel">
+                <constraints border-constraint="North"/>
+                <properties>
+                  <alignmentX value="0.0"/>
+                  <font name="Segoe UI" size="36" style="1"/>
+                  <foreground color="-15583446"/>
+                  <text value="Registros"/>
+                </properties>
+              </component>
             </children>
           </grid>
         </children>

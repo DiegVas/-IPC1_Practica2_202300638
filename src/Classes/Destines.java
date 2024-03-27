@@ -1,6 +1,8 @@
 package Classes;
 
-public class Destines {
+import java.io.Serializable;
+
+public class Destines implements Serializable {
 
     public String start, end, distance;
 

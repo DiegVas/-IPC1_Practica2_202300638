@@ -1,6 +1,8 @@
 package Classes;
 
-public class Trip {
+import java.io.Serializable;
+
+public class Trip implements Serializable {
     public Destines destines;
     public vehicle vehicle;
 
