@@ -12,6 +12,9 @@ import javax.swing.table.JTableHeader;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.nio.file.FileSystemNotFoundException;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -74,9 +77,75 @@ public class AppUI extends JFrame {
 
 
     public AppUI() {
+
+        //cargar los valores predefinidos del UI
+        new DestinesUI();
+        new GenerateRoutesUi();
+        new TripUI();
+        new RegisterUI();
+
         Data data = new Data();
         data.chargeAnimated(tripsAnimated);
-        Pilots.setText(String.valueOf(pilotList.size()));
+
+        //Cargar los datos serializados
+
+        Object loadedData = DataManager.loadData("registerList");
+        if (loadedData != null) {
+            Data.registerList = (List<Register>) loadedData;
+
+            for (Register register : Data.registerList) {
+
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+                int id = Data.registerList.indexOf(register) + 1;
+
+                Object[] row = {id, register.initTrip.format(formatter), register.endTrip.format(formatter), String.valueOf(register.distance), register.nameVehicle, String.format("%.2f", register.consumeGasoline)};
+                registerModel.addRow(row);
+            }
+
+        }
+
+        loadedData = DataManager.loadData("pilotList");
+        if (loadedData != null) Data.pilotList = (List<Trip>) loadedData;
+
+        loadedData = DataManager.loadData("tripsAnimated");
+        if (loadedData != null) {
+            List<TripAnimated> SerializableTripAnimated = (List<TripAnimated>) loadedData;
+
+            for (int i = 0; i < Data.tripsAnimated.size(); i++) {
+
+                TripAnimated oldTripAnimated = Data.tripsAnimated.get(i);
+                TripAnimated serializableTrip = SerializableTripAnimated.get(i);
+                TripAnimated newTripAnimated = new TripAnimated(oldTripAnimated.vehicleLabel, oldTripAnimated.distanceLabel, oldTripAnimated.gasolineLabel, oldTripAnimated.tripVehicle, oldTripAnimated.pilotsLabel, oldTripAnimated.inittripButton, oldTripAnimated.recargeGasolineButton, oldTripAnimated.generateButton, pilotList.get(i), i);
+                newTripAnimated.distance = serializableTrip.distance;
+                newTripAnimated.thank = serializableTrip.thank;
+                newTripAnimated.x = serializableTrip.x;
+                newTripAnimated.lap = serializableTrip.lap;
+                newTripAnimated.reverse = serializableTrip.reverse;
+                newTripAnimated.consumeGasoline = serializableTrip.consumeGasoline;
+                newTripAnimated.startTime = serializableTrip.startTime;
+                newTripAnimated.distanceLabel.setText(String.valueOf(serializableTrip.distance));
+                newTripAnimated.gasolineLabel.setText(String.valueOf(serializableTrip.thank));
+
+                if (serializableTrip.reverse) newTripAnimated.flipImage();
+                if (serializableTrip.lap == 1) newTripAnimated.inittripButton.setText("Volver");
+                if (serializableTrip.thank <= 0 && !newTripAnimated.tripVehicle.getText().isEmpty())
+                    newTripAnimated.recargeGasolineButton.setEnabled(true);
+
+                Data.tripsAnimated.set(i, newTripAnimated);
+            }
+        }
+        //Guardar Datos al cerrar
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                DataManager.saveData("registerList", Data.registerList);
+                DataManager.saveData("pilotList", pilotList);
+                DataManager.saveData("tripsAnimated", Data.tripsAnimated);
+                super.windowClosing(e);
+            }
+        });
+
+        Pilots.setText(String.valueOf(pilotList.stream().filter(pilot -> pilot.destines.distance.equals("0")).toList().size()));
 
         //Tabs
         CardLayout cardLayout = (CardLayout) (panelLayout.getLayout());
@@ -90,20 +159,9 @@ public class AppUI extends JFrame {
         setVisible(true);
         pack();
 
-
         UIManager.put("Button.select", new Color(0x436850));
 
-        //Destines
-        new DestinesUI();
-        //Generate routes
-        new GenerateRoutesUi();
-        //Trips
-        new TripUI();
-        //Register
-        new RegisterUI();
-
     }
-
 
     private class DestinesUI {
         DestinesUI() {
@@ -122,7 +180,7 @@ public class AppUI extends JFrame {
             header.setForeground(Color.white);
             header.setPreferredSize(new Dimension(100, 30));
             header.setFont(new Font("Roboto", Font.BOLD, 15));
-            
+
             travelsButton.addActionListener(e -> ((CardLayout) panelLayout.getLayout()).show(panelLayout, "destiny"));
             editDestinyButton.addActionListener(e -> ((CardLayout) panelLayout.getLayout()).show(panelLayout, "editDestiny"));
             tripButton.addActionListener(e -> ((CardLayout) panelLayout.getLayout()).show(panelLayout, "trips"));
@@ -193,6 +251,12 @@ public class AppUI extends JFrame {
 
             generateButton.addActionListener(e -> {
 
+                List<Trip> availablePilots = pilotList.stream().filter(pilot -> pilot.destines.distance.equals("0")).toList();
+                if (availablePilots.size() == 0) {
+                    JOptionPane.showMessageDialog(null, "No hay pilotos disponibl;es");
+                    return;
+                }
+
                 String start = startLabel.getText();
                 String end = endLabel.getText();
                 String distance = distanceLabel.getText();
@@ -201,7 +265,6 @@ public class AppUI extends JFrame {
                 vehicle vehicle = baseData.vehicleList.stream().filter(vehicle1 -> vehicle1.name.equals(Objects.requireNonNull(typeVehicleCombo.getSelectedItem()).toString())).toList().getFirst();
 
                 int indexFound;
-                List<Trip> availablePilots = pilotList.stream().filter(pilot -> pilot.destines.distance.isEmpty()).toList();
                 indexFound = !availablePilots.isEmpty() ? pilotList.indexOf(availablePilots.getFirst()) : -1;
 
                 Pilots.setText(String.valueOf(availablePilots.size() - 1));
@@ -226,6 +289,7 @@ public class AppUI extends JFrame {
                     generateButton.setEnabled(false);
                     JOptionPane.showMessageDialog(null, "No hay pilotos disponibles");
                 }
+
             });
 
         }

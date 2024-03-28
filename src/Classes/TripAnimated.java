@@ -1,21 +1,16 @@
 package Classes;
 
 import UI.AppUI;
-import org.w3c.dom.events.MouseEvent;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
 import java.util.List;
-import java.util.Objects;
 
 import static Classes.Data.pilotList;
 import static java.lang.ClassLoader.getSystemResource;
@@ -23,29 +18,30 @@ import static java.lang.ClassLoader.getSystemResource;
 public class TripAnimated implements Serializable {
     private static final int TOTAL_DISTANCE = 350;
     private double INITIAL_DISTANCE;
-    private double distance;
+    public double distance;
     private double xvelocity;
-    private double thank;
-    private double consumeGasoline;
+    public double thank;
+    public double consumeGasoline;
     public double x;
     private Trip trip;
-    public JButton recargeGasolineButton;
-    public JButton inittripButton;
-    public JButton generateButton;
-    public JLabel distanceLabel;
-    public JLabel vehicleLabel;
-    public JLabel gasolineLabel;
-    public JLabel tripVehicle;
-    public JLabel pilotsLabel;
+    transient public JButton recargeGasolineButton;
+    transient public JButton inittripButton;
+    transient public JButton generateButton;
+    transient public JLabel distanceLabel;
+    transient public JLabel vehicleLabel;
+    transient public JLabel gasolineLabel;
+    transient public JLabel tripVehicle;
+    transient public JLabel pilotsLabel;
     private int indexFound;
-    private LocalDateTime startTime;
+    public LocalDateTime startTime;
     private LocalDateTime endTime;
-    private int lap = 0;
-    public Timer tripTimer = new Timer(100, null);
-    private boolean reverse = false;
+    public int lap = 0;
+    transient public Timer tripTimer = new Timer(100, null);
+    public boolean reverse = false;
 
     public TripAnimated(JLabel vehicleLabel, JLabel distanceLabel, JLabel gasolineLabel, JLabel tripVehicle, JLabel pilotsLabel, JButton inittripButton, JButton recargeGasolineButton, JButton generateButton, Trip trip, int indexFound) {
 
+        startTime = LocalDateTime.now();
         this.INITIAL_DISTANCE = Double.parseDouble(trip.destines.distance);
         this.recargeGasolineButton = recargeGasolineButton;
         this.inittripButton = inittripButton;
@@ -121,9 +117,8 @@ public class TripAnimated implements Serializable {
             if (lap == 2) {
                 TripAnimated newAnimated = new TripAnimated(vehicleLabel, distanceLabel, gasolineLabel, tripVehicle, pilotsLabel, inittripButton, recargeGasolineButton, generateButton, new Trip(new Destines("", "", "0"), new vehicle("", typeVehicle.None)), indexFound);
                 Data.tripsAnimated.set(indexFound, newAnimated);
-                Data.pilotList.set(indexFound, new Trip(new Destines("", "", ""), new vehicle("", typeVehicle.None)));
+                Data.pilotList.set(indexFound, new Trip(new Destines("", "", "0"), new vehicle("", typeVehicle.None)));
 
-                startTime = LocalDateTime.now();
                 endTime = startTime.plusMinutes((long) (distance / xvelocity * 60));
                 Data.registerList.add(new Register(startTime, endTime, Integer.parseInt(trip.destines.distance), trip.vehicle.name, consumeGasoline));
 
@@ -131,14 +126,14 @@ public class TripAnimated implements Serializable {
                 String formattedStartTime = startTime.format(formatter);
                 String formattedEndTime = endTime.format(formatter);
 
-                Object[] tableRow = {Data.registerList.size(), formattedStartTime, formattedEndTime, trip.destines.distance, trip.vehicle.name, String.valueOf((int) consumeGasoline)};
+                Object[] tableRow = {Data.registerList.size(), formattedStartTime, formattedEndTime, trip.destines.distance, trip.vehicle.name, String.format("%.2f", consumeGasoline)};
                 AppUI.registerModel.addRow(tableRow);
 
                 generateButton.setEnabled(true);
                 generateButton.setForeground(Color.white);
                 generateButton.setBackground(new Color(25, 76, 64));
 
-                List<Trip> availablePilots = pilotList.stream().filter(pilot -> pilot.destines.distance.isEmpty()).toList();
+                List<Trip> availablePilots = pilotList.stream().filter(pilot -> pilot.destines.distance.equals("0")).toList();
                 pilotsLabel.setText(String.valueOf(availablePilots.size()));
 
                 SwingUtilities.invokeLater(() -> {

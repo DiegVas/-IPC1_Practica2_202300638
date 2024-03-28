@@ -14,9 +14,9 @@ public class Data implements Serializable {
     transient public static List<Destines> destinesList = new ArrayList<>();
     public static List<Register> registerList = new ArrayList<>();
     public static List<Trip> pilotList = new ArrayList<>(List.of(
-            new Trip(new Destines("", "", ""), new vehicle("", typeVehicle.Standard)),
-            new Trip(new Destines("", "", ""), new vehicle("", typeVehicle.Standard)),
-            new Trip(new Destines("", "", ""), new vehicle("", typeVehicle.Standard)))
+            new Trip(new Destines("", "", "0"), new vehicle("", typeVehicle.Standard)),
+            new Trip(new Destines("", "", "0"), new vehicle("", typeVehicle.Standard)),
+            new Trip(new Destines("", "", "0"), new vehicle("", typeVehicle.Standard)))
     );
     public static java.util.List<TripAnimated> tripsAnimated;
 
