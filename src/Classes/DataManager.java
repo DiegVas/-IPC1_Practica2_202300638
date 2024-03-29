@@ -1,10 +1,15 @@
 package Classes;
 
 import java.io.*;
+import java.net.URL;
+import java.util.Objects;
+
+import static java.lang.ClassLoader.getSystemResource;
 
 public class DataManager {
 
     public static void saveData(String filename, Object data) {
+
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("src/src/data/" + filename + ".dat"))) {
             oos.writeObject(data);
         } catch (IOException e) {
@@ -13,11 +18,17 @@ public class DataManager {
     }
 
     public static Object loadData(String filename) {
-        Object data = null;
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("src/src/data/" + filename + ".dat"))) {
-            data = ois.readObject();
-        } catch (FileNotFoundException e) {
+
+
+        URL resource = DataManager.class.getResource("./src/data/" + filename + ".dat");
+        if (resource == null) {
             System.out.println("No se ha encontrado el archivo");
+            return null;
+        }
+        Object data = null;
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(resource.getPath()))) {
+            data = ois.readObject();
+
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }

@@ -88,6 +88,7 @@ public class AppUI extends JFrame {
         data.chargeAnimated(tripsAnimated);
 
         //Cargar los datos serializados
+        DataManager DataManager = new DataManager();
 
         Object loadedData = DataManager.loadData("registerList");
         if (loadedData != null) {
@@ -210,6 +211,7 @@ public class AppUI extends JFrame {
                     super.mouseClicked(e);
                 }
             });
+
             editPanel.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {

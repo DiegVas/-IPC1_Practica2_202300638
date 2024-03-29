@@ -61,7 +61,7 @@ public class TripAnimated implements Serializable {
         tripVehicle.setText(trip.vehicle.name);
         distanceLabel.setText(String.valueOf(distance));
         gasolineLabel.setText(String.valueOf(thank));
-        vehicleLabel.setIcon(new ImageIcon(getSystemResource(trip.vehicle.typeVehicle.pathImage)));
+        vehicleLabel.setIcon(new ImageIcon(getClass().getResource(trip.vehicle.typeVehicle.pathImage)));
 
         tripTimer.addActionListener(e -> {
             updateDistanceAndPosition();
