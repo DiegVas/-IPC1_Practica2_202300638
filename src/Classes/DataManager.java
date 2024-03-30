@@ -18,9 +18,7 @@ public class DataManager {
     }
 
     public static Object loadData(String filename) {
-
-
-        URL resource = DataManager.class.getResource("./src/data/" + filename + ".dat");
+        URL resource = DataManager.class.getResource("/src/data/" + filename + ".dat");
         if (resource == null) {
             System.out.println("No se ha encontrado el archivo");
             return null;
