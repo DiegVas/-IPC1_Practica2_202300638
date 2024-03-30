@@ -18,16 +18,9 @@ public class DataManager {
     }
 
     public static Object loadData(String filename) {
-        URL resource = DataManager.class.getResource("/src/data/" + filename + ".dat");
-        
-        if (resource == null) {
-            System.out.println("No se ha encontrado el archivo");
-            return null;
-        }
         Object data = null;
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(resource.getPath()))) {
-            data = ois.readObject();
-
+        try (ObjectInputStream oos = new ObjectInputStream(new FileInputStream("src/src/data/" + filename + ".dat"))) {
+            data = oos.readObject();
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
